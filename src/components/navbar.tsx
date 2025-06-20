@@ -120,9 +120,9 @@ export default function Navbar() {
                 />
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-200 bg-clip-text text-transparent">
+                <span className="text-xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-200 bg-clip-text text-transparent">
                   Enegix{" "}
-                </h1>
+                </span>
                 <p className="text-xs text-gray-400 -mt-1 font-medium">
                   Web Solutions
                 </p>
