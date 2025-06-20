@@ -1,0 +1,148 @@
+/* Advanced Typography Settings */
+
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat);
+  letter-spacing: -0.025em;
+}
+
+/* Make headings look premium with better letter spacing */
+h1 {
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+h2 {
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Body text styles */
+body {
+  font-family: var(--font-space-grotesk);
+  font-weight: 400;
+}
+
+/* Paragraphs */
+p {
+  font-family: var(--font-space-grotesk);
+  line-height: 1.7;
+}
+
+/* Apply different styles to different text elements */
+.display-text {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.heading-text {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.body-text {
+  font-family: var(--font-space-grotesk);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.caption-text {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+}
+
+.button-text {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* Gradients for text */
+.gradient-text-blue {
+  background: linear-gradient(90deg, #60a5fa 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-primary {
+  background: linear-gradient(90deg, #2563eb 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Add a bit of character to links */
+a {
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Fix line breaks */
+br {
+  content: " ";
+  display: block;
+  margin: 0.5em 0;
+}
+
+/* Additional typography utility classes */
+.headline {
+  font-family: var(--font-montserrat);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.subheadline {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.ui-text {
+  font-family: var(--font-inter);
+  font-weight: 400;
+}
+
+.mono-text {
+  font-family: var(--font-space-grotesk);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Navigation specific typography */
+.nav-link {
+  font-family: var(--font-space-grotesk);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.nav-button {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* Text with gradient */
+.text-gradient {
+  background: linear-gradient(90deg, #60a5fa 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effects */
+.shadow-glow {
+  box-shadow: 0 0 8px rgba(66, 153, 225, 0.6);
+}
