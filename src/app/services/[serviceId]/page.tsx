@@ -21,13 +21,12 @@ const services = [
     shortDescription: "Custom websites and web applications built with the latest technologies.",
     fullDescription: "At Enegix Global, Ltd., we understand the importance of a Web Development Company in Ranchi to do more than simply build your next website. As your partner of technology, our products and services will do more than develop a platform; we create digital experiences that embody your brand, connect with your audience, and scale with your business. We create digital experiences for brands of all sizes, from startups to enterprises, utilizing best practices around simple architecture, modern coding techniques, and a user-centric perspective. We build website solutions that are not only operational but forward-thinking - whether it is developing a site that leverages AI tooling or is prepared for future scaling, we will build your website with what comes next in mind.",
     features: [
-    "Intelligent, objective-driven development specific to business needs " ,
-"Tight integration with business utilities and third-party platforms",
-"SEO-optimized codebase and architecture to enhance discoverability",
-"Quick-loading, mobile-optimized designs for enhanced engagement",
-"Enterprise-grade security with proactive monitoring",
-"Scalable builds that respond to market fluctuations and traffic spikes",
-
+      "Intelligent, objective-driven development specific to business needs",
+      "Tight integration with business utilities and third-party platforms",
+      "SEO-optimized codebase and architecture to enhance discoverability",
+      "Quick-loading, mobile-optimized designs for enhanced engagement",
+      "Enterprise-grade security with proactive monitoring",
+      "Scalable builds that respond to market fluctuations and traffic spikes",
     ],
     icon: (
       <svg
@@ -213,19 +212,19 @@ const services = [
 // Feature Item Component
 const FeatureItem = ({ text }: { text: string }) => (
   <motion.div 
-    initial={{ opacity: 0, x: -10 }}
+    initial={{ opacity: 0, x: -20 }}
     whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.3 }}
-    className="flex items-start gap-2 mb-3"
+    transition={{ duration: 0.5, ease: "easeOut" }}
+    className="flex items-start gap-3 mb-4 group"
   >
-    <div className="min-w-[24px] h-6 flex items-center justify-center mt-0.5">
+    <div className="min-w-[28px] h-7 flex items-center justify-center mt-0.5 bg-cyan-500/10 rounded-full group-hover:bg-cyan-500/30 transition-colors duration-300">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={2}
         stroke="currentColor"
-        className="w-5 h-5 text-cyan-400"
+        className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300"
       >
         <path
           strokeLinecap="round"
@@ -234,34 +233,46 @@ const FeatureItem = ({ text }: { text: string }) => (
         />
       </svg>
     </div>
-    <p className="text-gray-300">{text}</p>
+    <p className="text-gray-200 text-base font-space-grotesk group-hover:text-white transition-colors duration-300">{text}</p>
   </motion.div>
 );
 
 // Technology/Tool/Platform Item Component
 const TechItem = ({ text }: { text: string }) => (
-  <span className="bg-white/10 text-white px-3 py-1.5 rounded-full text-sm font-medium backdrop-blur-md">
+  <motion.span
+    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+    className="bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg border border-white/20 hover:border-cyan-400 transition-all duration-300"
+  >
     {text}
-  </span>
+  </motion.span>
 );
 
 // Related Service Card Component
 const RelatedServiceCard = ({ service }: { service: typeof services[0] }) => {
   return (
-    <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/10 hover:border-cyan-400/50 group transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
-      <div className="mb-4 p-3 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-400/20 w-fit text-cyan-400 group-hover:text-white group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-cyan-400 transition-all duration-300">
-        {service.icon}{" "}
+    <motion.div
+      whileHover={{ y: -5, boxShadow: "0 10px 20px rgba(0, 238, 255, 0.2)" }}
+      className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-cyan-400/50 group transition-all duration-500 relative overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="relative z-10">
+        <div className="mb-4 p-3 rounded-full bg-gradient-to-r from-blue-600/30 to-cyan-400/30 w-fit text-cyan-400 group-hover:text-white group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-cyan-400 transition-all duration-300">
+          {service.icon}
+        </div>
+        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors duration-300 font-montserrat tracking-tight">
+          {service.title}
+        </h3>
+        <p className="text-gray-300 font-space-grotesk text-sm leading-relaxed mb-4">
+          {service.shortDescription}
+        </p>
+        <Link href={`/services/${service.id}`} className="text-cyan-400 font-medium text-sm hover:text-cyan-300 transition-colors duration-300 flex items-center gap-1">
+          Learn More
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
       </div>
-      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300 font-montserrat tracking-tight">
-        {service.title}
-      </h3>
-      <p className="text-gray-400 font-space-grotesk font-light text-sm leading-relaxed mb-4">
-        {service.shortDescription}
-      </p>
-      <Link href={`/services/${service.id}`} className="text-cyan-400 font-medium text-sm hover:text-cyan-300 transition-colors">
-        Learn More →
-      </Link>
-    </div>
+    </motion.div>
   );
 };
 
@@ -310,50 +321,50 @@ export default function ServiceDetailPage({
       <ScrollFix />
       <Navbar />
 
-      <main className="bg-[#0c1220] text-white min-h-screen relative overflow-x-hidden">
+      <main className="bg-gradient-to-b from-[#0a0e1a] to-[#1a2a44] text-white min-h-screen relative overflow-x-hidden">
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-4">
+        <section className="relative pt-36 pb-24 px-4">
           {/* Animated background effects */}
           <div className="absolute top-0 left-0 right-0 bottom-0 z-0 pointer-events-none overflow-hidden">
             <div className="absolute top-20 flex h-[600px] w-full flex-col items-center justify-center overflow-hidden">
-              <Meteors number={30} />
+              <Meteors number={40} />
             </div>
             <motion.div
-              initial={{ opacity: 0.3 }}
-              animate={{ opacity: [0.3, 0.6, 0.3] }}
+              initial={{ opacity: 0.2 }}
+              animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.2, 1] }}
               transition={{
                 repeat: Infinity,
-                duration: 10,
+                duration: 12,
                 ease: "easeInOut",
               }}
-              className="absolute top-1/3 left-1/3 w-[400px] h-[400px] rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-400/10 blur-3xl pointer-events-none"
+              className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-blue-600/10 to-cyan-400/10 blur-3xl pointer-events-none"
             />
           </div>
           
           <div className="container mx-auto relative z-10">
             <div className="flex flex-col items-center text-center">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="mb-3 p-4 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-400/20 w-fit text-cyan-400"
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="mb-4 p-4 rounded-full bg-gradient-to-r from-blue-600/40 to-cyan-400/40 w-fit text-cyan-300 shadow-lg"
               >
                 {service.icon}
               </motion.div>
               
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
               >
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
                   {service.title}
                 </h1>
-                <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-3xl mx-auto font-space-grotesk">
+                <p className="text-gray-200 text-lg md:text-xl mb-8 max-w-3xl mx-auto font-space-grotesk leading-relaxed">
                   {service.fullDescription}
                 </p>
                 <Link href="/#contact">
-                  <RainbowButton size="lg">
+                  <RainbowButton size="lg" className="shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300">
                     Request a Quote
                   </RainbowButton>
                 </Link>
@@ -363,31 +374,26 @@ export default function ServiceDetailPage({
         </section>
 
         {/* Features Section */}
-        <section className="py-16 px-4 relative">
+        <section className="py-20 px-4 relative">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               {/* Features List */}
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
               >
-
-                <div>
-                  <div className="">
-                <h2 className="text-3xl font-bold mb-8 tracking-tight">
-                  Our <AuroraText> Website Development Services in India </AuroraText> are Beyond the Basics
-                </h2 >
-                   <p> Our Website Development Services in India at Enegix Web Solutions Pvt. Ltd. are more than simply providing a live URL—we create high-performing digital assets that work as tirelessly as you do. Your website is not only a digital presence; it is a living, breathing tool that can automate processes, interact with users, and bring about conversions. We build intelligent, adaptive solutions that integrate within your business environment—from CRM systems to chatbots—and optimize for speed, security, and discoverability. In the competitive online world of today, development isn't a formality—it's a game-changer.
-                </p>
-                  </div>
-                
-                 
+                <div className="mb-12">
+                  <h2 className="text-4xl font-extrabold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+                    Our <AuroraText>Website Development Services in India</AuroraText> are Beyond the Basics
+                  </h2>
+                  <p className="text-gray-200 text-lg font-space-grotesk leading-relaxed">
+                    Our Website Development Services in India at Enegix Web Solutions Pvt. Ltd. are more than simply providing a live URL—we create high-performing digital assets that work as tirelessly as you do. Your website is not only a digital presence; it is a living, breathing tool that can automate processes, interact with users, and bring about conversions. We build intelligent, adaptive solutions that integrate within your business environment—from CRM systems to chatbots—and optimize for speed, security, and discoverability. In the competitive online world of today, development isn't a formality—it's a game-changer.
+                  </p>
                 </div>
                 
-                <div className="space-y-1">
-                  
+                <div className="space-y-2">
                   {service.features.map((feature, index) => (
                     <FeatureItem key={index} text={feature} />
                   ))}
@@ -396,12 +402,12 @@ export default function ServiceDetailPage({
                 {/* Technologies/Tools/Platforms (if available) */}
                 {(service.technologies || service.tools || service.platforms) && (
                   <div className="mt-12">
-                    <h3 className="text-xl font-bold mb-6">
+                    <h3 className="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
                       {service.technologies ? "Technologies We Use" : 
                        service.tools ? "Tools We Leverage" : 
                        "Platforms We Work With"}
                     </h3>
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-4">
                       {(service.technologies || service.tools || service.platforms)?.map((item, index) => (
                         <TechItem key={index} text={item} />
                       ))}
@@ -412,62 +418,97 @@ export default function ServiceDetailPage({
               
               {/* Process/Approach */}
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
-                className="bg-white/5 backdrop-blur-lg rounded-xl p-8 border border-white/10"
+                className="bg-white/5 backdrop-blur-xl rounded-2xl p-10 border border-white/10 shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-500"
               >
-                <h3 className="text-3xl font-bold mb-8 tracking-tight">Web Design in India That Connects, Converts, and Captivates</h3>
-                <p>The design at Enegix Web Solutions Pvt. Ltd. is never skin deep- it is about building a connection. The philosophy of our Web Design in India is very simple: try to make it feel natural, keeping it purposeful, and think of the user at all times. Today’s audiences scroll fast, think smart, and expect a seamless digital journey- hence our design approach is to blend aesthetics with empathy- visual, flow, function- in the right touch. From a loud hero section to crisp typography to subtle animations, we design to guide, inspire, and convert-without scaring or underwhelming.</p>
+                <h3 className="text-3xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+                  Web Design in India That Connects, Converts, and Captivates
+                </h3>
+                <p className="text-gray-200 text-lg font-space-grotesk leading-relaxed mb-8">
+                  The design at Enegix Web Solutions Pvt. Ltd. is never skin deep- it is about building a connection. The philosophy of our Web Design in India is very simple: try to make it feel natural, keeping it purposeful, and think of the user at all times. Today’s audiences scroll fast, think smart, and expect a seamless digital journey- hence our design approach is to blend aesthetics with empathy- visual, flow, function- in the right touch. From a loud hero section to crisp typography to subtle animations, we design to guide, inspire, and convert-without scaring or underwhelming.
+                </p>
                 
-                <div className="space-y-6">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-cyan-400 font-bold text-lg">1</div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Clear & Smart Visuals</h3>
-                      <p className="text-gray-300">Smart designs for concise and effective visual communication.</p>
+                <div className="space-y-8">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="flex gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600/30 flex items-center justify-center text-cyan-300 font-bold text-lg shadow-md">
+                      1
                     </div>
-                  </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2 text-white">Clear & Smart Visuals</h3>
+                      <p className="text-gray-200">Smart designs for concise and effective visual communication.</p>
+                    </div>
+                  </motion.div>
                   
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-cyan-400 font-bold text-lg">2</div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">UX Backed by Data</h3>
-                      <p className="text-gray-300">Our team creates custom solutions that align with your brand identity and business objectives.</p>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="flex gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600/30 flex items-center justify-center text-cyan-300 font-bold text-lg shadow-md">
+                      2
                     </div>
-                  </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2 text-white">UX Backed by Data</h3>
+                      <p className="text-gray-200">Our team creates custom solutions that align with your brand identity and business objectives.</p>
+                    </div>
+                  </motion.div>
                   
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-cyan-400 font-bold text-lg">3</div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Interactive User Engagement</h3>
-                      <p className="text-gray-300">Interactive features to increase engagement and time-on-site.</p>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="flex gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600/30 flex items-center justify-center text-cyan-300 font-bold text-lg shadow-md">
+                      3
                     </div>
-                  </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2 text-white">Interactive User Engagement</h3>
+                      <p className="text-gray-200">Interactive features to increase engagement and time-on-site.</p>
+                    </div>
+                  </motion.div>
                   
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-cyan-400 font-bold text-lg">4</div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Mobile-First Responsiveness</h3>
-                      <p className="text-gray-300">Mobile-first approach to guarantee responsiveness on all screens.</p>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="flex gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600/30 flex items-center justify-center text-cyan-300 font-bold text-lg shadow-md">
+                      4
                     </div>
-                  </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2 text-white">Mobile-First Responsiveness</h3>
+                      <p className="text-gray-200">Mobile-first approach to guarantee responsiveness on all screens.</p>
+                    </div>
+                  </motion.div>
 
-                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-cyan-400 font-bold text-lg">5</div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Branded Visual Storytellingt</h3>
-                      <p className="text-gray-300">Color palettes and narrative elements extending the brand story.</p>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="flex gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600/30 flex items-center justify-center text-cyan-300 font-bold text-lg shadow-md">
+                      5
                     </div>
-                  </div>
-                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-cyan-400 font-bold text-lg">6</div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2">Inclusive & Accessible Design</h3>
-                      <p className="text-gray-300">Universal design solutions for accessibility in an inclusive user </p>
+                      <h3 className="text-xl font-bold mb-2 text-white">Branded Visual Storytelling</h3>
+                      <p className="text-gray-200">Color palettes and narrative elements extending the brand story.</p>
                     </div>
-                  </div>
+                  </motion.div>
+                  
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="flex gap-4"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600/30 flex items-center justify-center text-cyan-300 font-bold text-lg shadow-md">
+                      6
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2 text-white">Inclusive & Accessible Design</h3>
+                      <p className="text-gray-200">Universal design solutions for accessibility in an inclusive user</p>
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
@@ -475,14 +516,14 @@ export default function ServiceDetailPage({
         </section>
         
         {/* Related Services */}
-        <section className="py-16 px-4">
+        <section className="py-20 px-4">
           <div className="container mx-auto">
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="text-3xl font-bold mb-12 tracking-tight text-center"
+              className="text-4xl font-extrabold mb-12 tracking-tight text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600"
             >
               Related <AuroraText>Services</AuroraText>
             </motion.h2>
@@ -491,9 +532,9 @@ export default function ServiceDetailPage({
               {relatedServices.map((relService, index) => (
                 <motion.div
                   key={relService.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.8, delay: index * 0.2, ease: "easeOut" }}
                   viewport={{ once: true }}
                 >
                   <RelatedServiceCard service={relService} />
@@ -504,28 +545,30 @@ export default function ServiceDetailPage({
         </section>
         
         {/* CTA Section */}
-        <section className="py-20 px-4 relative">
+        <section className="py-24 px-4 relative">
           <div className="container mx-auto relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 backdrop-blur-lg rounded-2xl p-12 border border-white/10 text-center max-w-4xl mx-auto"
+              className="bg-gradient-to-r from-blue-900/40 to-cyan-900/40 backdrop-blur-xl rounded-3xl p-12 border border-white/20 text-center max-w-4xl mx-auto shadow-2xl hover:shadow-cyan-500/30 transition-shadow duration-500"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
-              <p className="text-gray-300 mb-8 text-lg max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+                Ready to Get Started?
+              </h2>
+              <p className="text-gray-200 mb-8 text-lg max-w-2xl mx-auto font-space-grotesk leading-relaxed">
                 Let's discuss how our {service.title} services can help you achieve your business goals.
                 Our team is ready to create customized solutions for your unique needs.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link href="/#contact">
-                  <RainbowButton size="lg">
+                  <RainbowButton size="lg" className="shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300">
                     Contact Us
                   </RainbowButton>
                 </Link>
                 <Link href="/services">
-                  <RainbowButton variant="outline" size="lg">
+                  <RainbowButton variant="outline" size="lg" className="shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300">
                     Explore All Services
                   </RainbowButton>
                 </Link>
